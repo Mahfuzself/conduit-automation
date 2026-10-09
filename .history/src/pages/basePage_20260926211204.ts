@@ -1,3 +1,0 @@
-export abastuct class BasePage{
-
-}
