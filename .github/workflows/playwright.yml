@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
   schedule:
-    - cron: '0 3 * * *'      # every day 9:00 AM Bangladesh time (03:00 UTC)
+    - cron: '0 5 * * *'      # every day 11:00 AM Bangladesh time (05:00 UTC)
   workflow_dispatch:          # manual run button in Actions tab
 
 jobs:
@@ -27,6 +27,9 @@ jobs:
 
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        BASE_URL: ${{ vars.BASE_URL }}
+        API_URL: ${{ vars.API_URL }}
 
     - name: Generate Allure report
       if: ${{ !cancelled() }}
